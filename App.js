@@ -1,19 +1,13 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
 import { Provider } from "react-redux";
-import Home from "./components/Home";
-import ShopDetail from "./components/ShopDetail";
-import ShopList from "./components/ShopList";
+
 import store from "./store";
+import RootNavigator from "./components/Navigation";
 
 export default function App() {
   return (
     <Provider store={store}>
-      <View>
-        {/* <Home /> */}
-        {/* <ShopList /> */}
-        <ShopDetail />
-      </View>
+      <RootNavigator />
     </Provider>
   );
 }

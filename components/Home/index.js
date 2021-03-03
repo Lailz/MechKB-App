@@ -8,7 +8,7 @@ import {
   TopStyling,
 } from "./styles";
 
-const Home = () => {
+const Home = (props) => {
   return (
     <HomeBackground
       style={{ flex: 1, width: "100%", height: "100%" }}
@@ -19,7 +19,7 @@ const Home = () => {
           <Title>Vader's Shop</Title>
         </TopStyling>
         <BottomStyling>
-          <ButtonStyled onPress={() => alert("Take me away")}>
+          <ButtonStyled onPress={() => props.navigation.navigate("ShopList")}>
             Press here
           </ButtonStyled>
         </BottomStyling>
