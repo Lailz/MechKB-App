@@ -7,7 +7,6 @@ import instance from "./instance";
 export const fetchProducts = () => async (dispatch) => {
   try {
     const res = await instance.get("/products");
-    console.log(res.data);
     dispatch({
       type: types.FETCH_PRODUCTS,
       payload: res.data,
