@@ -1,12 +1,15 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+
+// Components
 import Home from "../Home";
 import ShopDetail from "../ShopDetail";
 import ShopList from "../ShopList";
 import CartList from "../CartList";
 import CartButton from "../buttons/CartButton";
 import ProductDetail from "../ProductDetail";
+import Signin from "../authentication/Signin";
 
 const RootNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -14,7 +17,7 @@ const RootNavigator = () => {
   return (
     <NavigationContainer>
       <Navigator
-        initialRouteName="Home"
+        initialRouteName="Signin"
         screenOptions={{
           //   cardStyle: {
           //     backgroundColor: "pink",
@@ -53,6 +56,7 @@ const RootNavigator = () => {
           }}
         />
         <Screen name="CartList" component={CartList} />
+        <Screen name="Signin" component={Signin} />
       </Navigator>
     </NavigationContainer>
   );
