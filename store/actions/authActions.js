@@ -17,7 +17,7 @@ export const signin = (userData, navigation) => {
     try {
       const res = await instance.post("/signin", userData);
       dispatch(setUser(res.data.token));
-      navigation.replace("CartList");
+      navigation.goBack();
     } catch (error) {
       console.log("🚀 ~ file: authActions.js ~ line 9 ~ return ~ error", error);
     }
@@ -34,4 +34,26 @@ export const signup = (newUser, navigation) => {
       console.log("🚀 ~ file: authActions.js ~ line 9 ~ return ~ error", error);
     }
   };
+};
+
+export const signout = () => {
+  AsyncStorage.removeItem("myToken");
+  delete instance.defaults.headers.common.Authorization;
+  return {
+    type: types.SET_USER,
+    payload: null,
+  };
+};
+
+export const checkForToken = () => async (dispatch) => {
+  const token = await AsyncStorage.getItem("myToken");
+  if (token) {
+    const user = decode(token);
+    const currentTime = Date.now();
+    if (currentTime < user.exp) {
+      dispatch(setUser(token));
+    } else {
+      dispatch(signout());
+    }
+  }
 };
