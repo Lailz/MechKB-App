@@ -1,8 +1,5 @@
-// ACTION TYPES
 import * as types from "./types";
 import instance from "./instance";
-
-// ACTIONS
 
 export const fetchProducts = () => async (dispatch) => {
   try {
