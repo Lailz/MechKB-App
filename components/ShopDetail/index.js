@@ -6,10 +6,10 @@ import { useSelector } from "react-redux";
 import Loading from "../Loading";
 import ProductList from "../ProductList";
 
-const ShopDetail = () => {
+const ShopDetail = ({ route, navigation }) => {
   const productReducer = useSelector((state) => state.productReducer);
 
-  const shop = useSelector((state) => state.shopReducer.shops[2]);
+  const { shop } = route.params;
   const shopLoading = useSelector((state) => state.shopReducer.loading);
 
   if (shopLoading || productReducer.loading) return <Loading />;
@@ -23,7 +23,7 @@ const ShopDetail = () => {
         <CardItem>
           <Left>
             <Body>
-              <Text>{shop.name}</Text>
+              <Text onPress={() => navigation.push("Home")}>Take me home</Text>
             </Body>
           </Left>
         </CardItem>
