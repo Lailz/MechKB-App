@@ -2,6 +2,7 @@ import * as types from "../actions/types";
 
 const initialState = {
   user: null,
+  error: null,
 };
 
 const reducer = (state = initialState, action) => {

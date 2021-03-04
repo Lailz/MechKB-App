@@ -10,6 +10,7 @@ import CartList from "../CartList";
 import CartButton from "../buttons/CartButton";
 import ProductDetail from "../ProductDetail";
 import Signin from "../authentication/Signin";
+import Signup from "../authentication/Signup";
 
 const RootNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -17,7 +18,7 @@ const RootNavigator = () => {
   return (
     <NavigationContainer>
       <Navigator
-        initialRouteName="Signin"
+        initialRouteName="Home"
         screenOptions={{
           //   cardStyle: {
           //     backgroundColor: "pink",
@@ -57,6 +58,7 @@ const RootNavigator = () => {
         />
         <Screen name="CartList" component={CartList} />
         <Screen name="Signin" component={Signin} />
+        <Screen name="Signup" component={Signup} />
       </Navigator>
     </NavigationContainer>
   );

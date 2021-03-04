@@ -17,7 +17,19 @@ export const signin = (userData, navigation) => {
     try {
       const res = await instance.post("/signin", userData);
       dispatch(setUser(res.data.token));
-      navigation.replace("Home");
+      navigation.replace("CartList");
+    } catch (error) {
+      console.log("🚀 ~ file: authActions.js ~ line 9 ~ return ~ error", error);
+    }
+  };
+};
+
+export const signup = (newUser, navigation) => {
+  return async (dispatch) => {
+    try {
+      const res = await instance.post("/signup", newUser);
+      dispatch(setUser(res.data.token));
+      navigation.replace("CartList");
     } catch (error) {
       console.log("🚀 ~ file: authActions.js ~ line 9 ~ return ~ error", error);
     }

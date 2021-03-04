@@ -1,15 +1,16 @@
-import { Button, List, Text } from "native-base";
 import React from "react";
-import { View } from "react-native";
 import { useSelector } from "react-redux";
-import { checkout } from "../../store/actions/cartActions";
+
+// Styling
+import { List, Text } from "native-base";
+import { View } from "react-native";
+
+// Components
+import CheckoutButton from "../buttons/CheckoutButton";
 import Loading from "../Loading";
 import CartItem from "./CartItem";
-import { useDispatch } from "react-redux";
 
 const CartList = () => {
-  const dispatch = useDispatch();
-
   const items = useSelector((state) => state.cartReducer.items);
   const products = useSelector((state) => state.productReducer.products);
   const loading = useSelector((state) => state.productReducer.loading);
@@ -28,9 +29,7 @@ const CartList = () => {
       {items.length === 0 ? (
         <Text>There are no items in the cart</Text>
       ) : (
-        <Button block dark onPress={() => dispatch(checkout())}>
-          <Text>Checkout</Text>
-        </Button>
+        <CheckoutButton />
       )}
     </View>
   );

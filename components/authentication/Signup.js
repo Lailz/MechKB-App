@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { signin } from "../../store/actions/authActions";
+import { signup } from "../../store/actions/authActions";
 
 // Styling
 import {
@@ -13,18 +13,18 @@ import {
   AuthTitle,
 } from "./styles";
 
-const Signin = ({ navigation }) => {
+const Signup = ({ navigation }) => {
   const dispatch = useDispatch();
   const [user, setUser] = useState({
     username: "",
     password: "",
   });
   const handleSubmit = () => {
-    dispatch(signin(user, navigation));
+    dispatch(signup(user, navigation));
   };
   return (
     <AuthContainer>
-      <AuthTitle>Sign in</AuthTitle>
+      <AuthTitle>Sign up</AuthTitle>
       <AuthTextInput
         placeholder="Username"
         placeholderTextColor="#ff85a2"
@@ -38,13 +38,13 @@ const Signin = ({ navigation }) => {
         onChangeText={(password) => setUser({ ...user, password })}
       />
       <AuthButton onPress={handleSubmit}>
-        <AuthButtonText>Sign in</AuthButtonText>
+        <AuthButtonText>Sign up</AuthButtonText>
       </AuthButton>
-      <AuthOther onPress={() => navigation.navigate("Signup")}>
-        Press here to create an account
+      <AuthOther onPress={() => navigation.navigate("Signin")}>
+        Already have an account? Sign in!
       </AuthOther>
     </AuthContainer>
   );
 };
 
-export default Signin;
+export default Signup;
